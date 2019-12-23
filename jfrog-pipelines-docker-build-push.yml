@@ -2,22 +2,22 @@ resources:
   - name: repo_1_docker_build_push
     type: GitRepo
     configuration:
-      gitProvider: manishas_github   # replace with your integration
-      path: manishas-jfrog/jfrog-pipelines-docker-build-push    # replace with your repository name
+      gitProvider: twgithub   # replace with your integration
+      path: jfrogtw/jfrog-pipelines-docker-build-push    # replace with your repository name
       branches:
         include: master
 
   - name: build_info_1_docker_build_push
     type: BuildInfo
     configuration:
-      sourceArtifactory: demoArt
+      sourceArtifactory: this_artifactory
       buildName: svc_build
       buildNumber: 1
 
   - name: promoted_build_info
     type: BuildInfo
     configuration:
-      sourceArtifactory: demoArt
+      sourceArtifactory: this_artifactory
       buildName: svc_build
       buildNumber: 1
 
@@ -52,6 +52,7 @@ pipelines:
       - name: docker_build
         type: DockerBuild
         configuration:
+          affinitygroup: docker_ops
           dockerFileLocation: .
           dockerFileName: Dockerfile
           dockerImageName: pipe-master.jfrog.info:8082/docker-local/alpine37
@@ -64,6 +65,7 @@ pipelines:
       - name: docker_push
         type: DockerPush
         configuration:
+          affinitygroup: docker_ops
           targetRepository: docker-local
           integrations:
             - name: demoArt
@@ -73,6 +75,7 @@ pipelines:
       - name: publish_build_info
         type: PublishBuildInfo
         configuration:
+          affinitygroup: docker_ops
           inputSteps:
             - name: docker_push
           outputResources:
