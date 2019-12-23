@@ -60,7 +60,7 @@ pipelines:
           inputResources:
             - name: repo_1_docker_build_push
           integrations:
-            - name: demoArt
+            - name: this_artifactory
 
       - name: docker_push
         type: DockerPush
@@ -68,7 +68,7 @@ pipelines:
           affinityGroup: docker_ops
           targetRepository: docker-local
           integrations:
-            - name: demoArt
+            - name: this_artifactory
           inputSteps:
             - name: docker_build
 
@@ -86,7 +86,7 @@ pipelines:
         configuration:
           targetRepository: promoted-pipelines
           integrations:
-            - name: demoArt
+            - name: this_artifactory
           inputResources:
             - name: build_info_1_docker_build_push
           outputResources:
