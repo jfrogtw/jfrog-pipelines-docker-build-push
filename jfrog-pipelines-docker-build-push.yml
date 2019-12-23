@@ -52,7 +52,7 @@ pipelines:
       - name: docker_build
         type: DockerBuild
         configuration:
-          affinitygroup: docker_ops
+          affinityGroup: docker_ops
           dockerFileLocation: .
           dockerFileName: Dockerfile
           dockerImageName: pipe-master.jfrog.info:8082/docker-local/alpine37
@@ -65,7 +65,7 @@ pipelines:
       - name: docker_push
         type: DockerPush
         configuration:
-          affinitygroup: docker_ops
+          affinityGroup: docker_ops
           targetRepository: docker-local
           integrations:
             - name: demoArt
@@ -75,7 +75,7 @@ pipelines:
       - name: publish_build_info
         type: PublishBuildInfo
         configuration:
-          affinitygroup: docker_ops
+          affinityGroup: docker_ops
           inputSteps:
             - name: docker_push
           outputResources:
