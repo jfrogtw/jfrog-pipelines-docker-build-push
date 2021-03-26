@@ -55,7 +55,7 @@ pipelines:
           affinityGroup: docker_ops
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: giant.jfrog.io/artifactory/docker-local/alpine37
+          dockerImageName: giant.jfrog.io/docker-local/alpine37
           dockerImageTag: ${run_number}
           inputResources:
             - name: repo_1_docker_build_push
