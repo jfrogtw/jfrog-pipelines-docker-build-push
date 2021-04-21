@@ -66,7 +66,7 @@ pipelines:
         type: DockerPush
         configuration:
           affinityGroup: docker_ops
-          targetRepository: docker-local
+          targetRepository: kol-docker-local
           integrations:
             - name: demoArt
           inputSteps:
