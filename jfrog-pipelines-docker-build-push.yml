@@ -81,16 +81,16 @@ pipelines:
           outputResources:
             - name: build_info_1_docker_build_push
 
-      - name: promote_build
-        type: PromoteBuild
-        configuration:
-          targetRepository: kol-demo-pipelines
-          integrations:
-            - name: demoArt
-          inputResources:
-            - name: build_info_1_docker_build_push
-          outputResources:
-            - name: promoted_build_info
+#      - name: promote_build
+#        type: PromoteBuild
+#        configuration:
+#          targetRepository: kol-demo-pipelines
+#          integrations:
+#            - name: demoArt
+#          inputResources:
+#            - name: build_info_1_docker_build_push
+#          outputResources:
+#            - name: promoted_build_info
 
   # - name: demo_release
   #   steps:
